@@ -140,7 +140,7 @@ void movePlayer(char** maze) {
     switch (input){
         case 'w':
             //down 
-            if (maze[currentY - 1][currentX] == PATH) {
+            if (maze[currentY - 1][currentX] != WALL) {
                 maze[currentY][currentX] = PATH;
                 currentY--;
                 maze[currentY][currentX] = PLAYER;
@@ -148,7 +148,7 @@ void movePlayer(char** maze) {
             break;
         case 'a':
             //left
-            if (maze[currentY][currentX - 1] == PATH) {
+            if (maze[currentY][currentX - 1] != WALL) {
                 maze[currentY][currentX] = PATH;
                 currentX--;
                 maze[currentY][currentX] = PLAYER;
@@ -156,7 +156,7 @@ void movePlayer(char** maze) {
             break;
         case 's':
             //up
-            if (maze[currentY + 1][currentX] == PATH) {
+            if (maze[currentY + 1][currentX] != WALL) {
                 maze[currentY][currentX] = PATH;
                 currentY++;
                 maze[currentY][currentX] = PLAYER;
@@ -164,7 +164,7 @@ void movePlayer(char** maze) {
             break;
         case 'd':
             //right
-            if (maze[currentY][currentX + 1] == PATH) {
+            if (maze[currentY][currentX + 1] != WALL) {
                 maze[currentY][currentX] = PATH;
                 currentX++;
                 maze[currentY][currentX] = PLAYER;
@@ -185,13 +185,13 @@ void load_new_level() {
 
 void game_loop() {
     while (1) {
+        if (currentMaze[currentY + 1][currentX] == DOOR || currentMaze[currentY - 1][currentX] == DOOR || currentMaze[currentY][currentX + 1] == DOOR || currentMaze[currentY][currentX - 1] == DOOR) {
+            load_new_level();
+        }
         system("cls");
         printf("Current level: %d\n", currentMazeNum,"\n");
         renderMaze(currentMaze);
         movePlayer(currentMaze);
-        if (currentMaze[currentY][currentX] == DOOR) {
-            
-        }
     }
 }
 
