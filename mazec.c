@@ -77,7 +77,7 @@ void movePlayer(char** maze) {
     char input = getc(stdin);
     switch (input){
         case 'w':
-            //down 
+            //up
             if (maze[currentY - 1][currentX] != WALL) {
                 maze[currentY][currentX] = PATH;
                 currentY--;
@@ -93,7 +93,7 @@ void movePlayer(char** maze) {
             }
             break;
         case 's':
-            //up
+            //down
             if (maze[currentY + 1][currentX] != WALL) {
                 maze[currentY][currentX] = PATH;
                 currentY++;
@@ -132,9 +132,23 @@ void game_loop() {
     }
 }
 
+void start_menu() {
+    printf("MazeC 0.1\n");
+    printf("1. Start\n2. Keyboard controls\n");
+    switch (getc(stdin)) {
+        case 1:
+            MazeSetup(currentMazeNum, true);
+            game_loop();
+            break;
+        case 2:
+            printf("w = up, a = left, s = down, d = right\n");
+            break;
+        default:
+            break;
+    }
+}
+
 int main() {
-    MazeSetup(currentMazeNum, true);
-    game_loop();
     MazeSetup(currentMazeNum, false); //free the current maze
     return 0;
 }
