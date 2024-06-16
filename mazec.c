@@ -10,6 +10,8 @@
 #define PLAYER 'P'
 #define DOOR 'D'
 
+#define clear() printf("\033[H\033[J") //clear screen
+
 #define DEFAULT_X 8 //player start position
 #define DEFAULT_Y 1
 
@@ -19,37 +21,7 @@ char** currentMaze = NULL;
 int currentMazeNum = 0;
 
 /* MazeC - A simple maze game in C
-
-The game's goal is to be least resource intensive and have good performance.
-
 */
-
-
-/*char maze0[HEIGHT][WIDTH] = {
-    "##########",
-    "#        #",
-    "#  #     #",
-    "#  ## ## #",
-    "#  #     #",
-    "#  # ##  #",
-    "#  #  #  #",
-    "#     ## #",
-    "#       D#",
-    "##########"
-};
-
-char maze1[HEIGHT][WIDTH]= {
-    "##########",
-    "#        #",
-    "#  #     #",
-    "#  ## ## #",
-    "#  #     #",
-    "#  # ##  #",
-    "#  #  #  #",
-    "#     ## #",
-    "#       D#",
-    "##########"
-};*/
 
 char* maze0[HEIGHT] = {
     "##########",
@@ -188,7 +160,7 @@ void game_loop() {
         if (currentMaze[currentY + 1][currentX] == DOOR || currentMaze[currentY - 1][currentX] == DOOR || currentMaze[currentY][currentX + 1] == DOOR || currentMaze[currentY][currentX - 1] == DOOR) {
             load_new_level();
         }
-        system("cls");
+        clear();
         printf("Current level: %d\n", currentMazeNum,"\n");
         renderMaze(currentMaze);
         movePlayer(currentMaze);
@@ -198,6 +170,6 @@ void game_loop() {
 int main() {
     MazeSetup(currentMazeNum, true);
     game_loop();
-    MazeSetup(currentMazeNum, false); // Free the maze
+    MazeSetup(currentMazeNum, false); //free the current maze
     return 0;
 }
