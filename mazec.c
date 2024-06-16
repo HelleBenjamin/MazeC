@@ -134,21 +134,24 @@ void game_loop() {
 
 void start_menu() {
     printf("MazeC 0.1\n");
-    printf("1. Start\n2. Keyboard controls\n");
-    switch (getc(stdin)) {
-        case 1:
+    printf("1. Start\n2. Keyboard controls\n3. Exit\n");
+    while (true) {
+        char input = getc(stdin);
+        if (input == '1') {
             MazeSetup(currentMazeNum, true);
             game_loop();
-            break;
-        case 2:
+        } else if (input == '2') {
+            printf("Keyboard controls: ");
             printf("w = up, a = left, s = down, d = right\n");
+        } else if (input == '3') {
             break;
-        default:
-            break;
+        }
     }
 }
 
 int main() {
+    currentMazeNum = 0;
+    start_menu();
     MazeSetup(currentMazeNum, false); //free the current maze
     return 0;
 }
