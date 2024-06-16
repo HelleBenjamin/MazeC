@@ -1,9 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-
-#define WIDTH 10
-#define HEIGHT 10
+#include "maze_levels.h"
 
 #define WALL '#'
 #define PATH ' '
@@ -22,33 +20,6 @@ int currentMazeNum = 0;
 
 /* MazeC - A simple maze game in C
 */
-
-char* maze0[HEIGHT] = {
-    "##########",
-    "#        #",
-    "#  #     #",
-    "#  ## ## #",
-    "#  #     #",
-    "#  # ##  #",
-    "#  #  #  #",
-    "#     ## #",
-    "#       D#",
-    "##########"
-};
-
-char* maze1[HEIGHT] = {
-    "##########",
-    "#  #     #",
-    "#  #     #",
-    "#  ## ## #",
-    "#  #     #",
-    "#  # ##  #",
-    "#  #  #  #",
-    "#     ## #",
-    "#       D#",
-    "##########"
-};
-
 
 void MazeSetup(int maze, bool operation) {
     switch (maze) {
@@ -93,10 +64,6 @@ void MazeSetup(int maze, bool operation) {
     }
 }
 
-void generateMaze() {
-
-}
-
 void renderMaze(char** maze) {
     for (int i = 0; i < HEIGHT; i++) {
         for (int j = 0; j < WIDTH; j++) {
@@ -105,7 +72,6 @@ void renderMaze(char** maze) {
         printf("\n");
     }
 }
-
 
 void movePlayer(char** maze) {
     char input = getc(stdin);
@@ -153,7 +119,6 @@ void load_new_level() {
     currentMazeNum++;
     MazeSetup(currentMazeNum, true);
 }
-
 
 void game_loop() {
     while (1) {
