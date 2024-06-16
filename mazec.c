@@ -18,9 +18,6 @@ int currentY = 1;
 char** currentMaze = NULL;
 int currentMazeNum = 0;
 
-/* MazeC - A simple maze game in C
-*/
-
 void MazeSetup(int maze, bool operation) {
     switch (maze) {
         case 0:
