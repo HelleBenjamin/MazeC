@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <string.h>
 #include "maze_levels.h"
 
 #define WALL '#'
@@ -111,10 +112,13 @@ void movePlayer(char** maze) {
 }
 
 void load_new_level() {
-    currentX, currentY = DEFAULT_X, DEFAULT_Y;
     MazeSetup(currentMazeNum, false);
     currentMazeNum++;
     MazeSetup(currentMazeNum, true);
+    currentMaze[currentY][currentX] = PATH;
+    currentX = DEFAULT_X;
+    currentY = DEFAULT_Y;
+    currentMaze[currentY][currentX] = PLAYER;
 }
 
 void game_loop() {
@@ -130,8 +134,8 @@ void game_loop() {
 }
 
 void start_menu() {
-    printf("MazeC 0.1\n");
-    printf("1. Start\n2. Keyboard controls\n3. Exit\n");
+    const char start_menu_msg[] = "MazeC 0.1\n 1. Start\n 2. Keyboard controls\n 3. Exit\n";
+    printf("%s", start_menu_msg);
     while (true) {
         char input = getc(stdin);
         if (input == '1') {
@@ -139,7 +143,7 @@ void start_menu() {
             game_loop();
         } else if (input == '2') {
             printf("Keyboard controls: ");
-            printf("w = up, a = left, s = down, d = right\n");
+            printf("w = up, a = left, s = down, d = right, press enter after pressing a key\n");
         } else if (input == '3') {
             break;
         }
