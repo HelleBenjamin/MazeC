@@ -10,10 +10,10 @@
 
 #define clear() printf("\033[H\033[J") //clear screen
 
-#define DEFAULT_X 8 //player start position
+#define DEFAULT_X 1 //player start position
 #define DEFAULT_Y 1
 
-int currentX = 8;
+int currentX = 1;
 int currentY = 1;
 char** currentMaze = NULL;
 int currentMazeNum = 0;
