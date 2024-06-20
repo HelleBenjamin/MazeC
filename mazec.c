@@ -19,7 +19,7 @@ int currentY = 1;
 char** currentMaze = NULL;
 int currentMazeNum = 0;
 
-void MazeSetup(int maze, bool operation) {
+void MazeSetup(int maze, bool operation) { //0 = alloc, 1 = free
     switch (maze) {
         case 0:
             if (operation) {
