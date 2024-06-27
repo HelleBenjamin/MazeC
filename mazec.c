@@ -69,6 +69,7 @@ void renderMaze(char** maze) {
         }
         printf("\n");
     }
+    printf("Input: ");
 }
 
 void movePlayer(char** maze) {
