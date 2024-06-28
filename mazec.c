@@ -4,11 +4,6 @@
 #include <string.h>
 #include "maze_levels.h"
 
-#define WALL '#'
-#define PATH ' '
-#define PLAYER 'P'
-#define DOOR 'D'
-
 #define clear() printf("\033[H\033[J") //clear screen
 
 #define DEFAULT_X 1 //player start position
@@ -128,7 +123,7 @@ void game_loop() {
             load_new_level();
         }
         clear();
-        printf("Current level: %d\n", currentMazeNum,"\n");
+        printf("Current level: %d\n", currentMazeNum);
         renderMaze(currentMaze);
         movePlayer(currentMaze);
     }

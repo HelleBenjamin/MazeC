@@ -1,10 +1,16 @@
 #ifndef MAZE_LEVELS_H
 #define MAZE_LEVELS_H
 
+//This header file contains the maze levels.
+
 #define WIDTH 30
 #define HEIGHT 20
 
-//This header file contains the maze levels.
+#define WALL '#'
+#define PATH ' '
+#define PLAYER 'P'
+#define DOOR 'D'
+
 
 static char* maze0[HEIGHT] = {
     "#############################",
@@ -12,10 +18,10 @@ static char* maze0[HEIGHT] = {
     "# ## ### #                  #",
     "#        #                  #",
     "#### ##  #                  #",
-    "#                D          #",
-    "#                           #",
-    "#                           #",
-    "#                           #",
+    "#  #  #  #       D          #",
+    "#  #  #  #                  #",
+    "#        #                  #",
+    "#  #######                  #",
     "#                           #",
     "#                           #",
     "#                           #",
